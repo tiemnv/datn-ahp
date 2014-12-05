@@ -12,9 +12,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DoAnTotNghiep
 {
-    public partial class Form4 : Form
+    public partial class frmShowResult : Form
     {
-        public Form4()
+        public frmShowResult()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace DoAnTotNghiep
                         dataGridView1.Rows.Add();
                         dataGridView1.Rows[i].Cells[1].Value = (Convert.ToDouble(dtgButtonBelPl.Rows[i].Cells[2].Value) * pessimistic + Convert.ToDouble(dtgButtonBelPl.Rows[i].Cells[3].Value) * (1 - pessimistic)).ToString();
                         dataGridView1.Rows.Add();
-                        dataGridView1.Rows[i].Cells[2].Value = InputData.subsetTextRecusive[i];
+                        dataGridView1.Rows[i].Cells[2].Value = frmInputData.subsetTextRecusive[i];
 
                     }
 
@@ -138,7 +138,7 @@ namespace DoAnTotNghiep
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[1].Value = (Convert.ToDouble(dtgButtonBelPl.Rows[i].Cells[2].Value) * pessimistic + Convert.ToDouble(dtgButtonBelPl.Rows[i].Cells[3].Value) * (1 - pessimistic)).ToString();
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[2].Value = InputData.subsetTextRecusive[i];
+                dataGridView1.Rows[i].Cells[2].Value = frmInputData.subsetTextRecusive[i];
 
             }
 

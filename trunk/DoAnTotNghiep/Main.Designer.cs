@@ -32,12 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelDrawMain = new System.Windows.Forms.Panel();
             this.dtgButton = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.inputDataMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.analyzeMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.taskFinish = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bUTTONBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -52,7 +46,6 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.grvTieuChi = new System.Windows.Forms.DataGridView();
-            this.bUTTONTableAdapter = new DoAnTotNghiep.DATNDataSetTableAdapters.BUTTONTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surveyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,17 +53,22 @@
             this.buttontextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonspaceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonlevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bUTTONTableAdapter = new DoAnTotNghiep.DATNDataSetTableAdapters.BUTTONTableAdapter();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnPhanTich = new System.Windows.Forms.Button();
+            this.btnInputData = new System.Windows.Forms.Button();
             this.panelDrawMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgButton)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
             this.bindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bUTTONBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dATNDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvTieuChi)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelDrawMain
@@ -79,7 +77,7 @@
             this.panelDrawMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDrawMain.Location = new System.Drawing.Point(3, 16);
             this.panelDrawMain.Name = "panelDrawMain";
-            this.panelDrawMain.Size = new System.Drawing.Size(811, 405);
+            this.panelDrawMain.Size = new System.Drawing.Size(811, 371);
             this.panelDrawMain.TabIndex = 0;
             this.panelDrawMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panelDrawMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
@@ -94,68 +92,14 @@
             this.dtgButton.TabIndex = 2;
             this.dtgButton.Visible = false;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inputDataMenu,
-            this.analyzeMenu,
-            this.taskFinish});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(817, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // inputDataMenu
-            // 
-            this.inputDataMenu.Enabled = false;
-            this.inputDataMenu.Name = "inputDataMenu";
-            this.inputDataMenu.Size = new System.Drawing.Size(88, 20);
-            this.inputDataMenu.Text = "Nhập dữ liệu";
-            this.inputDataMenu.Click += new System.EventHandler(this.inputData);
-            // 
-            // analyzeMenu
-            // 
-            this.analyzeMenu.Enabled = false;
-            this.analyzeMenu.Name = "analyzeMenu";
-            this.analyzeMenu.Size = new System.Drawing.Size(70, 20);
-            this.analyzeMenu.Text = "Phân tích";
-            this.analyzeMenu.Click += new System.EventHandler(this.anazyle);
-            // 
-            // taskFinish
-            // 
-            this.taskFinish.Name = "taskFinish";
-            this.taskFinish.Size = new System.Drawing.Size(35, 20);
-            this.taskFinish.Text = "OK";
-            this.taskFinish.Click += new System.EventHandler(this.taskFinishClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.panelDrawMain);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 24);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(817, 424);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.grvTieuChi);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 249);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(817, 199);
-            this.panel1.TabIndex = 4;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.bindingNavigator);
+            this.groupBox2.Controls.Add(this.grvTieuChi);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 139);
+            this.groupBox2.Location = new System.Drawing.Point(0, 285);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(817, 60);
+            this.groupBox2.Size = new System.Drawing.Size(817, 163);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -278,20 +222,16 @@
             this.buttonspaceDataGridViewTextBoxColumn,
             this.buttonlevelDataGridViewTextBoxColumn});
             this.grvTieuChi.DataSource = this.bUTTONBindingSource;
-            this.grvTieuChi.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grvTieuChi.Location = new System.Drawing.Point(0, 0);
+            this.grvTieuChi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grvTieuChi.Location = new System.Drawing.Point(3, 16);
             this.grvTieuChi.Name = "grvTieuChi";
-            this.grvTieuChi.Size = new System.Drawing.Size(817, 140);
+            this.grvTieuChi.Size = new System.Drawing.Size(811, 144);
             this.grvTieuChi.TabIndex = 0;
             this.grvTieuChi.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvCriteria_CellValueChanged);
             this.grvTieuChi.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.grvCriteria_RowsAdded);
             this.grvTieuChi.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.grvCriteria_RowsRemoved);
             this.grvTieuChi.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvTieuChi_RowValidated);
             this.grvTieuChi.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.grvCriteria_UserDeletingRow);
-            // 
-            // bUTTONTableAdapter
-            // 
-            this.bUTTONTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -341,26 +281,89 @@
             this.buttonlevelDataGridViewTextBoxColumn.Name = "buttonlevelDataGridViewTextBoxColumn";
             this.buttonlevelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // bUTTONTableAdapter
+            // 
+            this.bUTTONTableAdapter.ClearBeforeFill = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.panelDrawMain);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox3.Location = new System.Drawing.Point(0, 58);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(817, 390);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnOK);
+            this.groupBox4.Controls.Add(this.btnPhanTich);
+            this.groupBox4.Controls.Add(this.btnInputData);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(817, 58);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            // 
+            // btnOK
+            // 
+            this.btnOK.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOK.Location = new System.Drawing.Point(674, 19);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(93, 33);
+            this.btnOK.TabIndex = 2;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = false;
+            this.btnOK.Click += new System.EventHandler(this.taskFinishClick);
+            // 
+            // btnPhanTich
+            // 
+            this.btnPhanTich.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnPhanTich.Enabled = false;
+            this.btnPhanTich.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPhanTich.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhanTich.Location = new System.Drawing.Point(242, 19);
+            this.btnPhanTich.Name = "btnPhanTich";
+            this.btnPhanTich.Size = new System.Drawing.Size(140, 33);
+            this.btnPhanTich.TabIndex = 1;
+            this.btnPhanTich.Text = "Phân Tích";
+            this.btnPhanTich.UseVisualStyleBackColor = false;
+            this.btnPhanTich.Click += new System.EventHandler(this.anazyle);
+            // 
+            // btnInputData
+            // 
+            this.btnInputData.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnInputData.Enabled = false;
+            this.btnInputData.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInputData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInputData.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnInputData.Location = new System.Drawing.Point(35, 19);
+            this.btnInputData.Name = "btnInputData";
+            this.btnInputData.Size = new System.Drawing.Size(142, 33);
+            this.btnInputData.TabIndex = 0;
+            this.btnInputData.Text = "Nhập Dữ Liệu";
+            this.btnInputData.UseVisualStyleBackColor = false;
+            this.btnInputData.Click += new System.EventHandler(this.inputData);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(817, 448);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox4);
             this.Name = "Main";
             this.Text = "Mô hình quyết định";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelDrawMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgButton)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).EndInit();
@@ -369,21 +372,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.bUTTONBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dATNDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvTieuChi)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panelDrawMain;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem inputDataMenu;
-        private System.Windows.Forms.ToolStripMenuItem analyzeMenu;
         private System.Windows.Forms.DataGridView dtgButton;
-        private System.Windows.Forms.ToolStripMenuItem taskFinish;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView grvTieuChi;
         private DATNDataSet dATNDataSet;
@@ -406,5 +404,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn buttontextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn buttonspaceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn buttonlevelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnPhanTich;
+        private System.Windows.Forms.Button btnInputData;
     }
 }

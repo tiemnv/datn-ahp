@@ -1,6 +1,6 @@
 ﻿namespace DoAnTotNghiep
 {
-    partial class Form4
+    partial class frmShowResult
     {
         /// <summary>
         /// Required designer variable.

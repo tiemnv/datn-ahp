@@ -110,9 +110,7 @@ E:\CODE\VINH\AHP\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.pdb
 E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csprojResolveAssemblyReference.cache
 E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.frmSurvey.resources
 E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Main.resources
-E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.InputData.resources
 E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form3.resources
-E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form4.resources
 E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.formAnalyze.resources
 E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
 E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.totalExperts.resources
@@ -132,3 +130,5 @@ E:\CODE\VINH\AHP2\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.formAnalyze.resources
 E:\CODE\VINH\AHP2\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
 E:\CODE\VINH\AHP2\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.totalExperts.resources
 E:\CODE\VINH\AHP2\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csproj.GenerateResource.Cache
+E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.frmShowResult.resources
+E:\CODE\VINH\AHP\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.frmInputData.resources

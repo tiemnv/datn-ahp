@@ -70,7 +70,7 @@
             this.panel2.Controls.Add(this.btnTieuChi);
             this.panel2.Controls.Add(this.bindingNavigator);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 345);
+            this.panel2.Location = new System.Drawing.Point(0, 356);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(799, 75);
             this.panel2.TabIndex = 3;
@@ -79,12 +79,15 @@
             // 
             this.btnTieuChi.AccessibleDescription = "";
             this.btnTieuChi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTieuChi.Location = new System.Drawing.Point(520, 28);
+            this.btnTieuChi.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnTieuChi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTieuChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTieuChi.Location = new System.Drawing.Point(475, 19);
             this.btnTieuChi.Name = "btnTieuChi";
-            this.btnTieuChi.Size = new System.Drawing.Size(213, 35);
+            this.btnTieuChi.Size = new System.Drawing.Size(242, 44);
             this.btnTieuChi.TabIndex = 1;
             this.btnTieuChi.Text = "Quản Lý Tiêu Chí Phương Án";
-            this.btnTieuChi.UseVisualStyleBackColor = true;
+            this.btnTieuChi.UseVisualStyleBackColor = false;
             this.btnTieuChi.Click += new System.EventHandler(this.btnTieuChi_Click);
             // 
             // bindingNavigator
@@ -226,7 +229,7 @@
             this.grvSurvey.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grvSurvey.Location = new System.Drawing.Point(0, 80);
             this.grvSurvey.Name = "grvSurvey";
-            this.grvSurvey.Size = new System.Drawing.Size(799, 265);
+            this.grvSurvey.Size = new System.Drawing.Size(799, 276);
             this.grvSurvey.TabIndex = 4;
             this.grvSurvey.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.grvDSMucTieu_CellValidating);
             this.grvSurvey.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvDSMucTieu_RowValidated);
@@ -300,7 +303,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 420);
+            this.ClientSize = new System.Drawing.Size(799, 431);
             this.Controls.Add(this.grvSurvey);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

@@ -51,6 +51,8 @@ namespace DoAnTotNghiep
         //Luu cac button 
         Dictionary<string, Button> dicTieuChi = new Dictionary<string, Button>();
         CONNECTTableAdapter connectTableAdapter = new CONNECTTableAdapter();
+        bool isUserDeleted = false;
+        string nameButtonDeleted = "";
         public Main()
         {
             InitializeComponent();
@@ -119,10 +121,11 @@ namespace DoAnTotNghiep
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dATNDataSet.BUTTON' table. You can move, or remove it, as needed.
-            this.bUTTONTableAdapter.FillBySurveyId(this.dATNDataSet.BUTTON,idMucTieu);
+            this.bUTTONTableAdapter.FillBySurveyId(this.dATNDataSet.BUTTON, idMucTieu);
             connectTableAdapter.Fill(dATNDataSet.CONNECT);
-
             bUTTONBindingSource.DataSource = this.dATNDataSet.BUTTON;
+            
+
 
             int iInCol = 0;
             int top = 40;
@@ -168,7 +171,81 @@ namespace DoAnTotNghiep
 
                 DrawLineConnectButton(dicTieuChi[child]);
             }
+
+            //khoi tao lai biet i indexButton;
+            DataRow rowLast =  dATNDataSet.BUTTON.Rows[dATNDataSet.BUTTON.Count - 1];
+            indexButton = Convert.ToInt32(rowLast["button_id"]) + 1;
+
+            //khoi tao lai biet i indexConnect;
+            rowLast = dATNDataSet.CONNECT.Rows[dATNDataSet.CONNECT.Count - 1];
+            indexConnect = Convert.ToInt32(rowLast["connect_button_id"]) + 1;
             
+        }
+
+        private void ReDrawMain()
+        {
+            //fill lai vi co the da them cai moi roi
+            this.bUTTONTableAdapter.FillBySurveyId(this.dATNDataSet.BUTTON, idMucTieu);
+            connectTableAdapter.Fill(dATNDataSet.CONNECT);
+            bUTTONBindingSource.DataSource = this.dATNDataSet.BUTTON;
+
+            connectTableAdapter.Fill(dATNDataSet.CONNECT);
+            //Xoa cac ket noi thua
+            foreach (DataRow row in dATNDataSet.CONNECT.Rows)
+            {
+                if (row["connect_button_highLevel"].ToString() == nameButtonDeleted || row["connect_button_lowLevel"].ToString() == nameButtonDeleted)
+                {
+                    row.Delete();
+                }
+            }
+            connectTableAdapter.Update(dATNDataSet.CONNECT);
+
+            int iInCol = 0;
+            int top = 40;
+            int left = 1;
+            int numCol = 0;
+            //Ve lai cac button
+            foreach (DataRow row in dATNDataSet.BUTTON.OrderBy(c => c.button_space))
+            {
+                Button btn = null;
+                // khoi tao so space
+                if (numCol == 0)
+                {
+                    numCol = Convert.ToInt32(row["button_space"].ToString());
+                }
+                // neu qua space khac thi gan lai so thu tu trong space = 0
+                if (numCol != Convert.ToInt32(row["button_space"].ToString()))
+                {
+                    numCol = Convert.ToInt32(row["button_space"].ToString());
+                    iInCol = 0;
+                    top = 40;
+                }
+                left = Convert.ToInt32(row["button_space"].ToString()) * 150;
+                btn = TaoButton(new Button(), row["button_name"].ToString(), row["button_text"].ToString(), top + iInCol * 30, left, 30, 100);
+                top = top + iInCol * 30;
+                iInCol++;
+
+                //Luu button lai
+                dicTieuChi.Add(btn.Name, btn);
+            }
+
+            string parent;
+            string child;
+
+            connectTableAdapter.Fill(dATNDataSet.CONNECT);
+            //Ve lai cac duong noi giua cac button
+            foreach (DataRow row in dATNDataSet.CONNECT.Rows)
+            {
+                parent = row["connect_button_highLevel"].ToString();
+                child = row["connect_button_lowLevel"].ToString();
+
+                pointRight.X = dicTieuChi[parent].Left + 100;
+                pointRight.Y = dicTieuChi[parent].Top + 15;
+                pointLeft.X = dicTieuChi[parent].Left;
+                pointLeft.Y = dicTieuChi[parent].Top + 15;
+
+                DrawLineConnectButton(dicTieuChi[child]);
+            }
         }
 
         private Button TaoButton(Button btn, string nameButton, string textButton, int top, int left, int height, int with)
@@ -237,9 +314,10 @@ namespace DoAnTotNghiep
                         bt1.Top = txt.Top;
                         bt1.Left = txt.Left;
                         bt1.Text = txt.Text;
-                        //bt1.Click += new EventHandler(bt1_ClickPaint);
-                        panelDrawMain.Controls.Add(bt1);
-                        bt1.Click += clickButtonToDraw;
+                        
+                        Button btn = TaoButton(new Button(), bt1.Name, bt1.Text, bt1.Top, bt1.Left, 30, 100);
+
+                        dicTieuChi.Add(bt1.Name, btn);
 
                         DataRow row = dATNDataSet.BUTTON.NewRow();
                         row["survey_id"] = idMucTieu;
@@ -612,6 +690,17 @@ namespace DoAnTotNghiep
         private void grvCriteria_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             bUTTONTableAdapter.Update(dATNDataSet.BUTTON);
+            if (isUserDeleted)
+            {
+                image = new Bitmap(panelDrawMain.ClientSize.Width, panelDrawMain.ClientSize.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+                foreach (DataRow row in dATNDataSet.BUTTON.Rows)
+                {
+                    panelDrawMain.Controls.Remove(dicTieuChi[row["button_name"].ToString()]);
+                }
+                dicTieuChi.Clear();
+                ReDrawMain();
+            }
+            
         }
 
 
@@ -620,9 +709,19 @@ namespace DoAnTotNghiep
             if (importData)
                 return;
 
-            //int idTieucChi = Convert.ToInt32(e.Row.Cells[0].Value.ToString());
-            //Button btn = dicTieuChi[idTieucChi];
-            //pnTieuChi.Controls.Remove(btn);
+            int idTieucChi = Convert.ToInt32(e.Row.Cells[0].Value.ToString());
+            nameButtonDeleted = e.Row.Cells[2].Value.ToString();
+            //foreach (DataRow row in dATNDataSet.CONNECT.Rows)
+            //{
+            //    if (row["connect_button_highLevel"].ToString() == nameButton || row["connect_button_lowLevel"].ToString() == nameButton)
+            //    {
+            //        row.Delete();
+            //    }
+            //}            
+
+            Button btn = dicTieuChi[nameButtonDeleted];
+            panelDrawMain.Controls.Remove(btn);
+            isUserDeleted = true;
         }
 
         private void grvCriteria_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -630,16 +729,22 @@ namespace DoAnTotNghiep
             if (importData)
                 return;
 
-            //int idTieucChi = Convert.ToInt32(grvCriteria.Rows[e.RowIndex].Cells[0].Value.ToString());
-            //Button btn = dicTieuChi[idTieucChi];
-            //if (e.ColumnIndex == 2)
-            //    btn.Text = grvCriteria.Rows[e.RowIndex].Cells[2].Value.ToString();
+            int idTieucChi = Convert.ToInt32(grvTieuChi.Rows[e.RowIndex].Cells[0].Value.ToString());
+            string btnName = grvTieuChi.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            Button btn = dicTieuChi[btnName];
+
+            //neu sua cot text button
+            if (e.ColumnIndex == 4)
+                btn.Text = grvTieuChi.Rows[e.RowIndex].Cells[4].Value.ToString();
+
             //if (e.ColumnIndex == 4)
             //{
-            //    pnTieuChi.Controls.Remove(btn);
-            //    int soO = Convert.ToInt32(grvCriteria.Rows[e.RowIndex].Cells[4].Value.ToString());
+            //    grvTieuChi.Controls.Remove(btn);
+            //    int soO = Convert.ToInt32(grvTieuChi.Rows[e.RowIndex].Cells[4].Value.ToString());
             //    TaoButton(btn, btn.Name, btn.Text, btn.Top, soO * 150, btn.Height, btn.Width);
             //}
+
             bUTTONTableAdapter.Update(dATNDataSet.BUTTON);
         }
 

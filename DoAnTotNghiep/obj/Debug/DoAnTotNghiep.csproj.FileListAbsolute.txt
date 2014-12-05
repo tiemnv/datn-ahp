@@ -1,0 +1,104 @@
+c:\users\administrator\documents\visual studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe.config
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form1.resources
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form2.resources
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe.config
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form1.resources
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form2.resources
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.totalExperts.resources
+C:\Users\Administrator\Documents\Visual Studio 2012\Projects\DoAnTotNghiep5\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form3.resources
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe.config
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.exe
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.pdb
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.pdb
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csprojResolveAssemblyReference.cache
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form1.resources
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form2.resources
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form3.resources
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.totalExperts.resources
+C:\Users\toan\Desktop\New folder\DoAnTotNghiep\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe.config
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form1.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form2.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form3.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.totalExperts.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe.config
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form1.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form2.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form3.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.formAnalyze.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.totalExperts.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep10\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe.config
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form1.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form2.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form3.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.formAnalyze.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.totalExperts.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form4.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe.config
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.pdb
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form1.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form2.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form3.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form4.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.formAnalyze.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.totalExperts.resources
+C:\Users\Administrator\Desktop\New folder\New folder\DoAnTotNghiep12 - Copy\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csproj.GenerateResource.Cache
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe.config
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.exe
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.pdb
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.pdb
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csprojResolveAssemblyReference.cache
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Main.resources
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form3.resources
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Form4.resources
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.formAnalyze.resources
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.Properties.Resources.resources
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.totalExperts.resources
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.csproj.GenerateResource.Cache
+D:\DoanTN\Program\DoAnTotNghiep17\DoAnTotNghiep17\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.InputData.resources
+E:\Do an\DATN\DoAnTotNghiep\bin\Debug\DoAnTotNghiep.exe.config
+E:\Do an\DATN\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.exe
+E:\Do an\DATN\DoAnTotNghiep\obj\Debug\DoAnTotNghiep.pdb

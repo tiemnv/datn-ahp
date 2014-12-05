@@ -33,10 +33,11 @@ namespace DoAnTotNghiep
         //tạo 1 mảng a int để đánh dấu và số k để trỏ tới từng phần tử khi trả về tập cuối
         int[] indexRecusive = new int[100];
         int[] indexElementPlanSet = new int[1] { 0 };
-
-        public InputData(string button_name, string button_text)
+        int idMucTieu;
+        public InputData(string button_name, string button_text, int id)
         {
             InitializeComponent();
+            idMucTieu = id;
 
             string button_text_connect = button_text;
             string button_name_connect = button_name;
@@ -47,7 +48,7 @@ namespace DoAnTotNghiep
             string table = "CONNECT";
             string dtg = "dataGridView_connect";
 
-            string queryString_get_connect = @"SELECT DISTINCT dbo.BUTTON.button_id, dbo.CONNECT.connect_button_highLevel,dbo.CONNECT.connect_button_lowLevel, dbo.BUTTON.button_name, dbo.BUTTON.button_text FROM dbo.CONNECT JOIN dbo.BUTTON ON dbo.CONNECT.connect_button_lowLevel = dbo.BUTTON.button_name WHERE(connect_button_highLevel = N'" + button_name_connect + "')";
+            string queryString_get_connect = @"SELECT DISTINCT dbo.BUTTON.button_id, dbo.CONNECT.connect_button_highLevel,dbo.CONNECT.connect_button_lowLevel, dbo.BUTTON.button_name, dbo.BUTTON.button_text FROM dbo.CONNECT JOIN dbo.BUTTON ON dbo.CONNECT.connect_button_lowLevel = dbo.BUTTON.button_name WHERE(dbo.BUTTON.survey_id = " + idMucTieu + " AND connect_button_highLevel = N'" + button_name_connect + "')";
             this.dataGridView_connect.DataSource = ketnoisql.getDatabase(queryString_get_connect, table, dtg);
 
             setButtonLowLevel = new string[dataGridView_connect.Rows.Count - 1];
@@ -146,7 +147,7 @@ namespace DoAnTotNghiep
 
                         try
                         {
-                            string queryString_getText = @"SELECT button_text FROM BUTTON Where BUTTON.button_name='"+set_button_lowLevel[i]+"'";
+                            string queryString_getText = @"SELECT button_text FROM BUTTON Where BUTTON.survey_id = " + idMucTieu + " AND BUTTON.button_name='" + set_button_lowLevel[i] + "'";
                             
                             ketnoisql.ExecuteNonQuery(queryString_getText);
 

@@ -46,21 +46,21 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grvSurvey = new System.Windows.Forms.DataGridView();
-            this.dATNDataSet = new DoAnTotNghiep.DATNDataSet();
-            this.surveytargetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.survey_targetTableAdapter = new DoAnTotNghiep.DATNDataSetTableAdapters.survey_targetTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.evaluatornumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.criterialevelnumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pessimisticargDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surveytargetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dATNDataSet = new DoAnTotNghiep.DATNDataSet();
+            this.survey_targetTableAdapter = new DoAnTotNghiep.DATNDataSetTableAdapters.survey_targetTableAdapter();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
             this.bindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grvSurvey)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dATNDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.surveytargetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dATNDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -223,20 +223,8 @@
             this.grvSurvey.Name = "grvSurvey";
             this.grvSurvey.Size = new System.Drawing.Size(799, 265);
             this.grvSurvey.TabIndex = 4;
-            // 
-            // dATNDataSet
-            // 
-            this.dATNDataSet.DataSetName = "DATNDataSet";
-            this.dATNDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // surveytargetBindingSource
-            // 
-            this.surveytargetBindingSource.DataMember = "survey_target";
-            this.surveytargetBindingSource.DataSource = this.dATNDataSet;
-            // 
-            // survey_targetTableAdapter
-            // 
-            this.survey_targetTableAdapter.ClearBeforeFill = true;
+            this.grvSurvey.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.grvDSMucTieu_CellValidating);
+            this.grvSurvey.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvDSMucTieu_RowValidated);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -275,6 +263,20 @@
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             // 
+            // surveytargetBindingSource
+            // 
+            this.surveytargetBindingSource.DataMember = "survey_target";
+            this.surveytargetBindingSource.DataSource = this.dATNDataSet;
+            // 
+            // dATNDataSet
+            // 
+            this.dATNDataSet.DataSetName = "DATNDataSet";
+            this.dATNDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // survey_targetTableAdapter
+            // 
+            this.survey_targetTableAdapter.ClearBeforeFill = true;
+            // 
             // frmSurvey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,8 +294,8 @@
             this.bindingNavigator.ResumeLayout(false);
             this.bindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grvSurvey)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dATNDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.surveytargetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dATNDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

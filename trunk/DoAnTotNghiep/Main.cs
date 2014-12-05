@@ -118,7 +118,45 @@ namespace DoAnTotNghiep
             // TODO: This line of code loads data into the 'dATNDataSet.BUTTON' table. You can move, or remove it, as needed.
             this.bUTTONTableAdapter.FillBySurveyId(this.dATNDataSet.BUTTON,idMucTieu);
             bUTTONBindingSource.DataSource = this.dATNDataSet.BUTTON;
+
+            int iInCol = 0;
+            int top = 40;
+            int left = 1;
+            int numCol = 0;
+            //Ve lai cac button
+            foreach (DataRow row in dATNDataSet.BUTTON.OrderBy(c => c.button_space))
+            {
+                // khoi tao so space
+                if (numCol == 0)
+                {
+                    numCol = Convert.ToInt32(row["button_space"].ToString());
+                }
+                // neu qua space khac thi gan lai so thu tu trong space = 0
+                if (numCol != Convert.ToInt32(row["button_space"].ToString()))
+                {
+                    numCol = Convert.ToInt32(row["button_space"].ToString());
+                    iInCol = 0;
+                    top = 40;
+
+                }
+                left = Convert.ToInt32(row["button_space"].ToString()) * 150;
+                TaoButton(new Button(), row["button_name"].ToString(), row["button_text"].ToString(), top + iInCol * 30, left, 30, 100);
+                top = top + iInCol * 30;
+                iInCol++;
+            }
             
+        }
+
+        private Button TaoButton(Button btn, string nameButton, string textButton, int top, int left, int height, int with)
+        {
+            btn.Name = nameButton;
+            btn.Text = textButton;
+            btn.Width = with;
+            btn.Top = top;
+            btn.Left = left;
+            btn.Click += clickButtonToDraw;
+            panelDrawMain.Controls.Add(btn);
+            return btn;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -384,8 +422,7 @@ namespace DoAnTotNghiep
             //bt1.Click += bt1_Click_Input_Data;
         }
 
-      
-        private void exit(object sender, EventArgs e)
+        private void DeleteTableTamp()
         {
             foreach (object obj in arrayTableToDelete)
             {
@@ -393,29 +430,12 @@ namespace DoAnTotNghiep
                 //MessageBox.Show(queryString_del_Buttonclick);
                 ketnoisql.ExecuteNonQuery(queryString_del_Buttonclick);
             }
-            //Xóa database
-            string queryString_del_BUTON = @" Delete From BUTTON";
-            try
-            {
-                ketnoisql.ExecuteNonQuery(queryString_del_BUTON);
-            }
-            catch (SqlException)
-            {
-                MessageBox.Show("sai khi xóa button");
-            }
-
-            string queryString_del_CONNECT = @" Delete From CONNECT";
-            try
-            {
-                ketnoisql.ExecuteNonQuery(queryString_del_CONNECT);
-            }
-            catch (SqlException)
-            {
-                MessageBox.Show("sai khi xóa connect");
-            }
-
-            //Thoát ứng dụng
-            Application.Exit();
+                        
+        }
+        private void exit(object sender, EventArgs e)
+        {
+            
+            this.Close();
         }
 
         private void inputData(object sender, EventArgs e)
@@ -573,6 +593,11 @@ namespace DoAnTotNghiep
         private void panelDrawMain_Resize(object sender, EventArgs e)
         {
             image = new Bitmap(panelDrawMain.ClientSize.Width, panelDrawMain.ClientSize.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            DeleteTableTamp();
         }
     }
 }

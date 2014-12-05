@@ -364,6 +364,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "Mô hình quyết định";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelDrawMain.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);

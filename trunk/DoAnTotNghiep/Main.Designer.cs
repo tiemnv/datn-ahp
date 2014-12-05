@@ -33,7 +33,6 @@
             this.panelDrawMain = new System.Windows.Forms.Panel();
             this.dtgButton = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.vẽCâyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inputDataMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.analyzeMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.taskFinish = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +52,7 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.grvTieuChi = new System.Windows.Forms.DataGridView();
+            this.bUTTONTableAdapter = new DoAnTotNghiep.DATNDataSetTableAdapters.BUTTONTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surveyidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +60,6 @@
             this.buttontextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonspaceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonlevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bUTTONTableAdapter = new DoAnTotNghiep.DATNDataSetTableAdapters.BUTTONTableAdapter();
             this.panelDrawMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgButton)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -98,7 +97,6 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.vẽCâyToolStripMenuItem,
             this.inputDataMenu,
             this.analyzeMenu,
             this.taskFinish});
@@ -107,13 +105,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(817, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // vẽCâyToolStripMenuItem
-            // 
-            this.vẽCâyToolStripMenuItem.Name = "vẽCâyToolStripMenuItem";
-            this.vẽCâyToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
-            this.vẽCâyToolStripMenuItem.Text = "Mô hình mới";
-            
             // 
             // inputDataMenu
             // 
@@ -276,6 +267,7 @@
             // 
             this.grvTieuChi.AllowUserToAddRows = false;
             this.grvTieuChi.AutoGenerateColumns = false;
+            this.grvTieuChi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grvTieuChi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grvTieuChi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
@@ -294,12 +286,17 @@
             this.grvTieuChi.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvCriteria_CellValueChanged);
             this.grvTieuChi.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.grvCriteria_RowsAdded);
             this.grvTieuChi.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.grvCriteria_RowsRemoved);
+            this.grvTieuChi.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvTieuChi_RowValidated);
             this.grvTieuChi.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.grvCriteria_UserDeletingRow);
+            // 
+            // bUTTONTableAdapter
+            // 
+            this.bUTTONTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Mã Tiêu Chí Phương Án";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -308,40 +305,41 @@
             this.surveyidDataGridViewTextBoxColumn.DataPropertyName = "survey_id";
             this.surveyidDataGridViewTextBoxColumn.HeaderText = "survey_id";
             this.surveyidDataGridViewTextBoxColumn.Name = "surveyidDataGridViewTextBoxColumn";
+            this.surveyidDataGridViewTextBoxColumn.Visible = false;
             // 
             // buttonnameDataGridViewTextBoxColumn
             // 
             this.buttonnameDataGridViewTextBoxColumn.DataPropertyName = "button_name";
             this.buttonnameDataGridViewTextBoxColumn.HeaderText = "button_name";
             this.buttonnameDataGridViewTextBoxColumn.Name = "buttonnameDataGridViewTextBoxColumn";
+            this.buttonnameDataGridViewTextBoxColumn.Visible = false;
             // 
             // buttonidDataGridViewTextBoxColumn
             // 
             this.buttonidDataGridViewTextBoxColumn.DataPropertyName = "button_id";
             this.buttonidDataGridViewTextBoxColumn.HeaderText = "button_id";
             this.buttonidDataGridViewTextBoxColumn.Name = "buttonidDataGridViewTextBoxColumn";
+            this.buttonidDataGridViewTextBoxColumn.Visible = false;
             // 
             // buttontextDataGridViewTextBoxColumn
             // 
             this.buttontextDataGridViewTextBoxColumn.DataPropertyName = "button_text";
-            this.buttontextDataGridViewTextBoxColumn.HeaderText = "button_text";
+            this.buttontextDataGridViewTextBoxColumn.HeaderText = "Tên Tiêu Chí Phương Án";
             this.buttontextDataGridViewTextBoxColumn.Name = "buttontextDataGridViewTextBoxColumn";
             // 
             // buttonspaceDataGridViewTextBoxColumn
             // 
             this.buttonspaceDataGridViewTextBoxColumn.DataPropertyName = "button_space";
-            this.buttonspaceDataGridViewTextBoxColumn.HeaderText = "button_space";
+            this.buttonspaceDataGridViewTextBoxColumn.HeaderText = "Phân Vùng";
             this.buttonspaceDataGridViewTextBoxColumn.Name = "buttonspaceDataGridViewTextBoxColumn";
+            this.buttonspaceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // buttonlevelDataGridViewTextBoxColumn
             // 
             this.buttonlevelDataGridViewTextBoxColumn.DataPropertyName = "button_level";
-            this.buttonlevelDataGridViewTextBoxColumn.HeaderText = "button_level";
+            this.buttonlevelDataGridViewTextBoxColumn.HeaderText = "Cấp Độ";
             this.buttonlevelDataGridViewTextBoxColumn.Name = "buttonlevelDataGridViewTextBoxColumn";
-            // 
-            // bUTTONTableAdapter
-            // 
-            this.bUTTONTableAdapter.ClearBeforeFill = true;
+            this.buttonlevelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Main
             // 
@@ -380,7 +378,6 @@
 
         private System.Windows.Forms.Panel panelDrawMain;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem vẽCâyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inputDataMenu;
         private System.Windows.Forms.ToolStripMenuItem analyzeMenu;
         private System.Windows.Forms.DataGridView dtgButton;

@@ -45,6 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DATNDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DATNDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmSurvey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSurvey.Designer.cs">
+      <DependentUpon>frmSurvey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +98,9 @@
     <Compile Include="totalExperts.Designer.cs">
       <DependentUpon>totalExperts.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmSurvey.resx">
+      <DependentUpon>frmSurvey.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +128,17 @@
     <EmbeddedResource Include="totalExperts.resx">
       <DependentUpon>totalExperts.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DATNDataSet.xsc">
+      <DependentUpon>DATNDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DATNDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DATNDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DATNDataSet.xss">
+      <DependentUpon>DATNDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

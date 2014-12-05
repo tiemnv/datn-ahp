@@ -21,6 +21,7 @@ namespace DoAnTotNghiep
         {
             // TODO: This line of code loads data into the 'dATNDataSet.survey_target' table. You can move, or remove it, as needed.
             this.survey_targetTableAdapter.Fill(this.dATNDataSet.survey_target);
+            this.WindowState = FormWindowState.Maximized;
 
         }
 

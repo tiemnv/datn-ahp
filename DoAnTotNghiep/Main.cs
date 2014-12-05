@@ -120,6 +120,9 @@ namespace DoAnTotNghiep
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            this.WindowState = FormWindowState.Maximized;
+
             // TODO: This line of code loads data into the 'dATNDataSet.BUTTON' table. You can move, or remove it, as needed.
             this.bUTTONTableAdapter.FillBySurveyId(this.dATNDataSet.BUTTON, idMucTieu);
             connectTableAdapter.FillBySurveyId(dATNDataSet.CONNECT, idMucTieu);
@@ -328,19 +331,6 @@ namespace DoAnTotNghiep
                         dATNDataSet.BUTTON.Rows.Add(row);
                         bUTTONTableAdapter.Update(dATNDataSet.BUTTON);
 
-                        //Dua vao SQL button gom ten button = bt1.Name, khoang button = bt1.Left /150,
-
-//                        string queryString = @"insert into BUTTON(button_name, button_id, button_text, button_space)
-//                                            values          (N'" + bt1.Name + "',N'" + indexButton.ToString() + "',N'" + bt1.Text + "',N'" + (bt1.Left / 150).ToString() + "')";
-
-//                        try
-//                        {
-//                            ketnoisql.ExecuteNonQuery(queryString);
-//                        }
-//                        catch (SqlException)
-//                        {
-//                            MessageBox.Show("Dữ liệu thực sự đã tồn tại");
-//                        }
                         indexButton++;
                        
                         
@@ -560,13 +550,12 @@ namespace DoAnTotNghiep
 
             for(int i =0;i<arrayTableToDelete.Count;i++)
             {
-                arrTable[i] = arrayTableToDelete[i].ToString();             
+                arrTable[i] = arrayTableToDelete[i].ToString();                
             }
-
-            if (arrayTableToDelete.Count > 0)
+            arrayTableToDelete.Clear();
+            if (arrTable.Length>0)
             {
                 tablesDrop = String.Join(", ", arrTable);
-
                 queryString_del_Buttonclick = @" DROP TABLE " + tablesDrop + "";
                 try
                 {
@@ -772,6 +761,11 @@ namespace DoAnTotNghiep
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             DeleteTableTamp();
+        }
+
+        private void grvTieuChi_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            bUTTONTableAdapter.Update(dATNDataSet.BUTTON);
         }
     }
 }

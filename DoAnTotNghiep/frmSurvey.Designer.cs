@@ -46,18 +46,20 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1 = new System.Windows.Forms.Panel();
             this.grvSurvey = new System.Windows.Forms.DataGridView();
+            this.surveytargetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dATNDataSet = new DoAnTotNghiep.DATNDataSet();
+            this.survey_targetTableAdapter = new DoAnTotNghiep.DATNDataSetTableAdapters.survey_targetTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.evaluatornumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.criterialevelnumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pessimisticargDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surveytargetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dATNDataSet = new DoAnTotNghiep.DATNDataSet();
-            this.survey_targetTableAdapter = new DoAnTotNghiep.DATNDataSetTableAdapters.survey_targetTableAdapter();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).BeginInit();
             this.bindingNavigator.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grvSurvey)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.surveytargetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dATNDataSet)).BeginInit();
@@ -75,18 +77,20 @@
             // 
             // btnTieuChi
             // 
+            this.btnTieuChi.AccessibleDescription = "";
             this.btnTieuChi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTieuChi.Location = new System.Drawing.Point(689, 39);
+            this.btnTieuChi.Location = new System.Drawing.Point(520, 28);
             this.btnTieuChi.Name = "btnTieuChi";
-            this.btnTieuChi.Size = new System.Drawing.Size(98, 24);
+            this.btnTieuChi.Size = new System.Drawing.Size(213, 35);
             this.btnTieuChi.TabIndex = 1;
-            this.btnTieuChi.Text = "Tạo tiêu chí";
+            this.btnTieuChi.Text = "Quản Lý Tiêu Chí Phương Án";
             this.btnTieuChi.UseVisualStyleBackColor = true;
             this.btnTieuChi.Click += new System.EventHandler(this.btnTieuChi_Click);
             // 
             // bindingNavigator
             // 
             this.bindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator.BindingSource = this.surveytargetBindingSource;
             this.bindingNavigator.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
             this.bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -199,6 +203,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -226,43 +231,6 @@
             this.grvSurvey.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.grvDSMucTieu_CellValidating);
             this.grvSurvey.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvDSMucTieu_RowValidated);
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // evaluatornumberDataGridViewTextBoxColumn
-            // 
-            this.evaluatornumberDataGridViewTextBoxColumn.DataPropertyName = "evaluator_number";
-            this.evaluatornumberDataGridViewTextBoxColumn.HeaderText = "evaluator_number";
-            this.evaluatornumberDataGridViewTextBoxColumn.Name = "evaluatornumberDataGridViewTextBoxColumn";
-            // 
-            // criterialevelnumDataGridViewTextBoxColumn
-            // 
-            this.criterialevelnumDataGridViewTextBoxColumn.DataPropertyName = "criteria_level_num";
-            this.criterialevelnumDataGridViewTextBoxColumn.HeaderText = "criteria_level_num";
-            this.criterialevelnumDataGridViewTextBoxColumn.Name = "criterialevelnumDataGridViewTextBoxColumn";
-            // 
-            // pessimisticargDataGridViewTextBoxColumn
-            // 
-            this.pessimisticargDataGridViewTextBoxColumn.DataPropertyName = "pessimistic_arg";
-            this.pessimisticargDataGridViewTextBoxColumn.HeaderText = "pessimistic_arg";
-            this.pessimisticargDataGridViewTextBoxColumn.Name = "pessimisticargDataGridViewTextBoxColumn";
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            // 
             // surveytargetBindingSource
             // 
             this.surveytargetBindingSource.DataMember = "survey_target";
@@ -277,6 +245,57 @@
             // 
             this.survey_targetTableAdapter.ClearBeforeFill = true;
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(50, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(712, 40);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "CHƯƠNG TRÌNH MÔ PHỎNG THUẬT TOÁN AHP";
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Tên Mục Tiêu";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // evaluatornumberDataGridViewTextBoxColumn
+            // 
+            this.evaluatornumberDataGridViewTextBoxColumn.DataPropertyName = "evaluator_number";
+            this.evaluatornumberDataGridViewTextBoxColumn.HeaderText = "evaluator_number";
+            this.evaluatornumberDataGridViewTextBoxColumn.Name = "evaluatornumberDataGridViewTextBoxColumn";
+            this.evaluatornumberDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // criterialevelnumDataGridViewTextBoxColumn
+            // 
+            this.criterialevelnumDataGridViewTextBoxColumn.DataPropertyName = "criteria_level_num";
+            this.criterialevelnumDataGridViewTextBoxColumn.HeaderText = "criteria_level_num";
+            this.criterialevelnumDataGridViewTextBoxColumn.Name = "criterialevelnumDataGridViewTextBoxColumn";
+            this.criterialevelnumDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pessimisticargDataGridViewTextBoxColumn
+            // 
+            this.pessimisticargDataGridViewTextBoxColumn.DataPropertyName = "pessimistic_arg";
+            this.pessimisticargDataGridViewTextBoxColumn.HeaderText = "pessimistic_arg";
+            this.pessimisticargDataGridViewTextBoxColumn.Name = "pessimisticargDataGridViewTextBoxColumn";
+            this.pessimisticargDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Miêu Tả";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            // 
             // frmSurvey
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,13 +305,14 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmSurvey";
-            this.Text = "frmSurvey";
+            this.Text = "Chương trình mô phỏng thuật toán AHP";
             this.Load += new System.EventHandler(this.frmSurvey_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator)).EndInit();
             this.bindingNavigator.ResumeLayout(false);
             this.bindingNavigator.PerformLayout();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grvSurvey)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.surveytargetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dATNDataSet)).EndInit();
@@ -321,6 +341,7 @@
         private DATNDataSet dATNDataSet;
         private System.Windows.Forms.BindingSource surveytargetBindingSource;
         private DATNDataSetTableAdapters.survey_targetTableAdapter survey_targetTableAdapter;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn evaluatornumberDataGridViewTextBoxColumn;

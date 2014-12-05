@@ -15,10 +15,10 @@ namespace DoAnTotNghiep
 {
 
 
-    public partial class InputData : Form
+    public partial class frmInputData : Form
     {
 
-        public InputData()
+        public frmInputData()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace DoAnTotNghiep
         int[] indexRecusive = new int[100];
         int[] indexElementPlanSet = new int[1] { 0 };
         int idMucTieu;
-        public InputData(string button_name, string button_text, int id)
+        public frmInputData(string button_name, string button_text, int id)
         {
             InitializeComponent();
             idMucTieu = id;

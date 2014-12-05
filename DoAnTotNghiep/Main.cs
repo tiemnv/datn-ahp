@@ -354,7 +354,8 @@ namespace DoAnTotNghiep
                     
                     if (getlevel < Main.levelNumber - 1)
                     {
-                        InputData f = new InputData(bt1.Name, bt1.Text, idMucTieu);
+                        frmInputData f = new frmInputData(bt1.Name, bt1.Text, idMucTieu);
+                        f.StartPosition = FormStartPosition.CenterScreen;
                         f.Show();
                     }
                    
@@ -608,7 +609,8 @@ namespace DoAnTotNghiep
             panelDrawMain.MouseDoubleClick -= panel1_MouseDoubleClick;
             //Tổng số lượng chuyên gia tham gia đánh giá
             totalExperts f = new totalExperts();
-            f.Show();
+            f.StartPosition = FormStartPosition.CenterScreen;
+            f.ShowDialog();
         }
 
         //private void newWindow(object sender, EventArgs e)
@@ -660,7 +662,8 @@ namespace DoAnTotNghiep
             formAnalyze f = new formAnalyze(idMucTieu);
             f.Show();
             f.Close();
-            Form4 f4 = new Form4();
+            frmShowResult f4 = new frmShowResult();
+            f4.StartPosition = FormStartPosition.CenterScreen;
             f4.Show();
         }
 
@@ -668,19 +671,34 @@ namespace DoAnTotNghiep
         {
             if (clickMenu == 0)
             {
-                inputDataMenu.Enabled = true;
-                analyzeMenu.Enabled = false;
+                
+
+                btnInputData.Enabled = true;
+                btnPhanTich.Enabled = false;
+
+                btnPhanTich.ForeColor = Color.Gray;
+                btnInputData.ForeColor = Color.White;
 
             }
             if (clickMenu == 1)
             {
-                inputDataMenu.Enabled = false;
-                analyzeMenu.Enabled = true;
+                
+
+                btnInputData.Enabled = false;
+                btnPhanTich.Enabled = true;
+
+                btnPhanTich.ForeColor = Color.White;
+                btnInputData.ForeColor = Color.Gray;
             }
             if (clickMenu == 2)
             {
-                inputDataMenu.Enabled = false;
-                analyzeMenu.Enabled = false;
+                
+
+                btnInputData.Enabled = false;
+                btnPhanTich.Enabled = false;
+
+                btnPhanTich.ForeColor = Color.Gray;
+                btnInputData.ForeColor = Color.Gray;
             }
         }
 
@@ -767,5 +785,6 @@ namespace DoAnTotNghiep
         {
             bUTTONTableAdapter.Update(dATNDataSet.BUTTON);
         }
+        
     }
 }

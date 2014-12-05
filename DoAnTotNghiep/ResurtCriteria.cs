@@ -57,29 +57,29 @@ namespace DoAnTotNghiep
             this.panel1.Controls.Add(lb_3);
 
 
-            Label[] lb = new Label[InputData.subsetTextRecusive.Length];
+            Label[] lb = new Label[frmInputData.subsetTextRecusive.Length];
 
 
-            for (int i = 0; i < InputData.subsetTextRecusive.Length; i++)
+            for (int i = 0; i < frmInputData.subsetTextRecusive.Length; i++)
             {
                 
                 lb[i] = new Label();
                 lb[i].Name = i.ToString();
-                lb[i].Text = "Nhóm " + InputData.subsetTextRecusive[i];
+                lb[i].Text = "Nhóm " + frmInputData.subsetTextRecusive[i];
                 lb[i].Location = new System.Drawing.Point(0, i * 30 + 30);
                 lb[i].Size = new System.Drawing.Size(150, 30);
                 lb[i].BorderStyle = BorderStyle.FixedSingle;
                 this.panel1.Controls.Add(lb[i]);
             }
 
-            TextBox[] tb = new TextBox[InputData.subsetTextRecusive.Length];
-            for (int i = 0; i < InputData.subsetTextRecusive.Length; i++)
+            TextBox[] tb = new TextBox[frmInputData.subsetTextRecusive.Length];
+            for (int i = 0; i < frmInputData.subsetTextRecusive.Length; i++)
             {
                 tb[i] = new TextBox();
                 tb[i].Name = i.ToString();
                 try
                 {
-                    string query_getValue = @"SELECT Bel FROM " + button_name_copy + "_Bel_Pl" + " Where NameSetPhuongAn ='" + InputData.subsetButtonRecusive[i] + "'";
+                    string query_getValue = @"SELECT Bel FROM " + button_name_copy + "_Bel_Pl" + " Where NameSetPhuongAn ='" + frmInputData.subsetButtonRecusive[i] + "'";
                     //MessageBox.Show(query_getValue);
                     tb[i].Text = Convert.ToString(ketnoisql.ExecuteScalar(query_getValue));
                 }
@@ -93,15 +93,15 @@ namespace DoAnTotNghiep
                 this.panel1.Controls.Add(tb[i]);
             }
 
-            TextBox[] tb1 = new TextBox[InputData.subsetTextRecusive.Length];
-            for (int i = 0; i < InputData.subsetTextRecusive.Length; i++)
+            TextBox[] tb1 = new TextBox[frmInputData.subsetTextRecusive.Length];
+            for (int i = 0; i < frmInputData.subsetTextRecusive.Length; i++)
             {
 
                 tb1[i] = new TextBox();
                 tb1[i].Name = i.ToString();
                 try
                 {
-                    string query_getValue = @"SELECT Pl FROM " + button_name_copy + "_Bel_Pl" + " Where NameSetPhuongAn ='" + InputData.subsetButtonRecusive[i] + "'";
+                    string query_getValue = @"SELECT Pl FROM " + button_name_copy + "_Bel_Pl" + " Where NameSetPhuongAn ='" + frmInputData.subsetButtonRecusive[i] + "'";
                     tb1[i].Text = Convert.ToString(ketnoisql.ExecuteScalar(query_getValue));
                 }
                 catch (SqlException)

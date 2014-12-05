@@ -1,6 +1,6 @@
 ﻿namespace DoAnTotNghiep
 {
-    partial class InputData
+    partial class frmInputData
     {
         /// <summary>
         /// Required designer variable.

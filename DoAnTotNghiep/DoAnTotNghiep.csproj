@@ -66,11 +66,11 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="InputData.cs">
+    <Compile Include="frmInputData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InputData.Designer.cs">
-      <DependentUpon>InputData.cs</DependentUpon>
+    <Compile Include="frmInputData.Designer.cs">
+      <DependentUpon>frmInputData.cs</DependentUpon>
     </Compile>
     <Compile Include="ResurtCriteria.cs">
       <SubType>Form</SubType>
@@ -78,11 +78,11 @@
     <Compile Include="ResurtCriteria.Designer.cs">
       <DependentUpon>ResurtCriteria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Resurt.cs">
+    <Compile Include="frmShowResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Resurt.Designer.cs">
-      <DependentUpon>Resurt.cs</DependentUpon>
+    <Compile Include="frmShowResult.Designer.cs">
+      <DependentUpon>frmShowResult.cs</DependentUpon>
     </Compile>
     <Compile Include="formAnalyze.cs">
       <SubType>Form</SubType>
@@ -108,14 +108,14 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InputData.resx">
-      <DependentUpon>InputData.cs</DependentUpon>
+    <EmbeddedResource Include="frmInputData.resx">
+      <DependentUpon>frmInputData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResurtCriteria.resx">
       <DependentUpon>ResurtCriteria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resurt.resx">
-      <DependentUpon>Resurt.cs</DependentUpon>
+    <EmbeddedResource Include="frmShowResult.resx">
+      <DependentUpon>frmShowResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formAnalyze.resx">
       <DependentUpon>formAnalyze.cs</DependentUpon>

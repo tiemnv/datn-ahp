@@ -48,6 +48,7 @@ namespace DoAnTotNghiep
                 con.Open();
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
+                con.Close();
             }
             //con.Close();
             //con.Dispose();

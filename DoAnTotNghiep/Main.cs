@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Collections;
+using DoAnTotNghiep.DATNDataSetTableAdapters;
 
 namespace DoAnTotNghiep
 {
@@ -47,8 +48,9 @@ namespace DoAnTotNghiep
         private int idMucTieu;
         // Xac dinh trang thay import du lieu de kiem tra trong event cua gridview;
         private bool importData = true;
-        
-
+        //Luu cac button 
+        Dictionary<string, Button> dicTieuChi = new Dictionary<string, Button>();
+        CONNECTTableAdapter connectTableAdapter = new CONNECTTableAdapter();
         public Main()
         {
             InitializeComponent();
@@ -80,7 +82,8 @@ namespace DoAnTotNghiep
         }
 
         public Main(String name, int id, DATNDataSet dataset)
-        {
+        {           
+
             importData = true;
             InitializeComponent();
 
@@ -110,13 +113,15 @@ namespace DoAnTotNghiep
             nameMucTieu = name;
             idMucTieu = id;
             dATNDataSet = dataset;
-            importData = false;
+            importData = false;            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dATNDataSet.BUTTON' table. You can move, or remove it, as needed.
             this.bUTTONTableAdapter.FillBySurveyId(this.dATNDataSet.BUTTON,idMucTieu);
+            connectTableAdapter.Fill(dATNDataSet.CONNECT);
+
             bUTTONBindingSource.DataSource = this.dATNDataSet.BUTTON;
 
             int iInCol = 0;
@@ -126,6 +131,7 @@ namespace DoAnTotNghiep
             //Ve lai cac button
             foreach (DataRow row in dATNDataSet.BUTTON.OrderBy(c => c.button_space))
             {
+                Button btn = null;
                 // khoi tao so space
                 if (numCol == 0)
                 {
@@ -137,12 +143,30 @@ namespace DoAnTotNghiep
                     numCol = Convert.ToInt32(row["button_space"].ToString());
                     iInCol = 0;
                     top = 40;
-
                 }
                 left = Convert.ToInt32(row["button_space"].ToString()) * 150;
-                TaoButton(new Button(), row["button_name"].ToString(), row["button_text"].ToString(), top + iInCol * 30, left, 30, 100);
+                btn = TaoButton(new Button(), row["button_name"].ToString(), row["button_text"].ToString(), top + iInCol * 30, left, 30, 100);
                 top = top + iInCol * 30;
                 iInCol++;
+
+                //Luu button lai
+                dicTieuChi.Add(btn.Name, btn);
+            }
+
+            string parent;
+            string child;
+            //Ve lai cac duong noi giua cac button
+            foreach (DataRow row in dATNDataSet.CONNECT.Rows)
+            {
+                parent = row["connect_button_highLevel"].ToString();
+                child = row["connect_button_lowLevel"].ToString();
+
+                pointRight.X = dicTieuChi[parent].Left + 100;
+                pointRight.Y = dicTieuChi[parent].Top + 15;
+                pointLeft.X = dicTieuChi[parent].Left;
+                pointLeft.Y = dicTieuChi[parent].Top + 15;
+
+                DrawLineConnectButton(dicTieuChi[child]);
             }
             
         }
@@ -351,60 +375,7 @@ namespace DoAnTotNghiep
                     else
                     {
                         //Vẽ
-                        if (bt1.Left > pointLeft.X)
-                        {
-                            using (graphics = Graphics.FromImage(image))
-                            {
-                                graphics.DrawLine(penDraw, pointRight.X, pointRight.Y, bt1.Left, bt1.Top + 15);
-                            }
-                            panelDrawMain.Invalidate();
-                            //dua vao SQL ket noi gom button_HightLever = id_button_1, button_LowLever = indexSecondButton
-                            string queryString2 = @"insert into CONNECT(connect_button_id, connect_button_highLevel, connect_button_lowLevel)
-                                                values          (N'" + indexConnect.ToString() + "',N'" + indexFirstButton + "',N'" + indexSecondButton + "')";
-
-                            try
-                            {
-                                ketnoisql.ExecuteNonQuery(queryString2);
-
-                            }
-                            catch (SqlException)
-                            {
-                                MessageBox.Show("sai này 1");
-                            }
-
-                            indexConnect++;
-                            //MessageBox.Show("muc 1 co connect_button_id = " + connect_button_id.ToString());
-
-
-
-                        }
-                        else if (bt1.Left < pointLeft.X)
-                        {
-                            using (graphics = Graphics.FromImage(image))
-                            {
-                                graphics.DrawLine(penDraw, pointLeft.X, pointLeft.Y, bt1.Left + 100, bt1.Top + 15);
-                            }
-                            panelDrawMain.Invalidate();
-                            //dua vao SQL ket noi gom button_HightLever = bt, button_LowLever = p
-                            string queryString3 = @"insert into CONNECT(connect_button_id, connect_button_highLevel, connect_button_lowLevel)
-                                                values          (N'" + indexConnect.ToString() + "',N'" + indexSecondButton + "',N'" + indexFirstButton + "')";
-                            try
-                            {
-                                ketnoisql.ExecuteNonQuery(queryString3);
-
-                            }
-                            catch (SqlException)
-                            {
-                                MessageBox.Show("sai này 2");
-                            }
-                            indexConnect++;
-                            //MessageBox.Show("muc 2 co connect_button_id = " + connect_button_id.ToString());
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không thể vẽ");
-                        }
+                        DrawLineConnectButtonAndInsertData(bt1);
 
                         totalButtonToDraw = 0;
                     }
@@ -414,6 +385,88 @@ namespace DoAnTotNghiep
             }
         }
 
+
+        public void DrawLineConnectButton(Button bt1)
+        {
+            if (bt1.Left > pointLeft.X)
+            {
+                using (graphics = Graphics.FromImage(image))
+                {
+                    graphics.DrawLine(penDraw, pointRight.X, pointRight.Y, bt1.Left, bt1.Top + 15);
+                }
+                panelDrawMain.Invalidate();
+            }
+            else if (bt1.Left < pointLeft.X)
+            {
+                using (graphics = Graphics.FromImage(image))
+                {
+                    graphics.DrawLine(penDraw, pointLeft.X, pointLeft.Y, bt1.Left + 100, bt1.Top + 15);
+                }
+                panelDrawMain.Invalidate();
+            }
+            else
+            {
+                MessageBox.Show("Không thể vẽ");
+            }
+        }
+
+        public void DrawLineConnectButtonAndInsertData(Button bt1)
+        {
+            if (bt1.Left > pointLeft.X)
+            {
+                using (graphics = Graphics.FromImage(image))
+                {
+                    graphics.DrawLine(penDraw, pointRight.X, pointRight.Y, bt1.Left, bt1.Top + 15);
+                }
+                panelDrawMain.Invalidate();
+                //dua vao SQL ket noi gom button_HightLever = id_button_1, button_LowLever = indexSecondButton
+                string queryString2 = @"insert into CONNECT(connect_button_id, connect_button_highLevel, connect_button_lowLevel)
+                                                values          (N'" + indexConnect.ToString() + "',N'" + indexFirstButton + "',N'" + indexSecondButton + "')";
+
+                try
+                {
+                    ketnoisql.ExecuteNonQuery(queryString2);
+
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("sai này 1");
+                }
+
+                indexConnect++;
+                //MessageBox.Show("muc 1 co connect_button_id = " + connect_button_id.ToString());
+
+
+
+            }
+            else if (bt1.Left < pointLeft.X)
+            {
+                using (graphics = Graphics.FromImage(image))
+                {
+                    graphics.DrawLine(penDraw, pointLeft.X, pointLeft.Y, bt1.Left + 100, bt1.Top + 15);
+                }
+                panelDrawMain.Invalidate();
+                //dua vao SQL ket noi gom button_HightLever = bt, button_LowLever = p
+                string queryString3 = @"insert into CONNECT(connect_button_id, connect_button_highLevel, connect_button_lowLevel)
+                                                values          (N'" + indexConnect.ToString() + "',N'" + indexSecondButton + "',N'" + indexFirstButton + "')";
+                try
+                {
+                    ketnoisql.ExecuteNonQuery(queryString3);
+
+                }
+                catch (SqlException)
+                {
+                    MessageBox.Show("sai này 2");
+                }
+                indexConnect++;
+                //MessageBox.Show("muc 2 co connect_button_id = " + connect_button_id.ToString());
+
+            }
+            else
+            {
+                MessageBox.Show("Không thể vẽ");
+            }
+        }
 
   
         private void panel1_MouseClick(object sender, MouseEventArgs e)

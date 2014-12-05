@@ -122,7 +122,7 @@ namespace DoAnTotNghiep
         {
             // TODO: This line of code loads data into the 'dATNDataSet.BUTTON' table. You can move, or remove it, as needed.
             this.bUTTONTableAdapter.FillBySurveyId(this.dATNDataSet.BUTTON, idMucTieu);
-            connectTableAdapter.Fill(dATNDataSet.CONNECT);
+            connectTableAdapter.FillBySurveyId(dATNDataSet.CONNECT, idMucTieu);
             bUTTONBindingSource.DataSource = this.dATNDataSet.BUTTON;
             
 
@@ -186,10 +186,10 @@ namespace DoAnTotNghiep
         {
             //fill lai vi co the da them cai moi roi
             this.bUTTONTableAdapter.FillBySurveyId(this.dATNDataSet.BUTTON, idMucTieu);
-            connectTableAdapter.Fill(dATNDataSet.CONNECT);
+            connectTableAdapter.FillBySurveyId(dATNDataSet.CONNECT,idMucTieu);
             bUTTONBindingSource.DataSource = this.dATNDataSet.BUTTON;
 
-            connectTableAdapter.Fill(dATNDataSet.CONNECT);
+            
             //Xoa cac ket noi thua
             foreach (DataRow row in dATNDataSet.CONNECT.Rows)
             {
@@ -232,7 +232,7 @@ namespace DoAnTotNghiep
             string parent;
             string child;
 
-            connectTableAdapter.Fill(dATNDataSet.CONNECT);
+            //connectTableAdapter.Fill(dATNDataSet.CONNECT);
             //Ve lai cac duong noi giua cac button
             foreach (DataRow row in dATNDataSet.CONNECT.Rows)
             {
@@ -359,12 +359,12 @@ namespace DoAnTotNghiep
                 //Lấy level của nút này
                 try
                 {
-                    string query_getLevel = @"SELECT button_level FROM dbo.BUTTON WHERE button_name=N'"+bt1.Name+"'";
+                    string query_getLevel = @"SELECT button_level FROM dbo.BUTTON WHERE survey_id = " + idMucTieu + " AND  button_name=N'" + bt1.Name + "'";
                     int getlevel = Convert.ToInt32(ketnoisql.ExecuteScalar(query_getLevel));
                     
                     if (getlevel < Main.levelNumber - 1)
                     {
-                        InputData f = new InputData(bt1.Name, bt1.Text);
+                        InputData f = new InputData(bt1.Name, bt1.Text, idMucTieu);
                         f.Show();
                     }
                    
@@ -379,7 +379,7 @@ namespace DoAnTotNghiep
             {
                 try
                 {
-                    string query_getLevel = @"SELECT button_level FROM dbo.BUTTON WHERE button_name=N'" + bt1.Name + "'";
+                    string query_getLevel = @"SELECT button_level FROM dbo.BUTTON WHERE survey_id = " + idMucTieu + " AND  button_name=N'" + bt1.Name + "'";
                     int getlevel = Convert.ToInt32(ketnoisql.ExecuteScalar(query_getLevel));
                     //MessageBox.Show(Form1.levelNumber.ToString());
 
@@ -417,28 +417,28 @@ namespace DoAnTotNghiep
                     indexSecondButton = bt1.Name;
                     //Kiểm tra xem 2 button này có trong bảng kết nối không
                     string queryString_connect_scalar_1 = @"select count(*) FROM CONNECT
-                                                        WHERE (CONNECT.connect_button_highLevel = N'" + indexFirstButton + "' AND  CONNECT.connect_button_lowLevel = N'" + indexSecondButton + "')";
+                                                        WHERE (survey_id = " + idMucTieu + " AND CONNECT.connect_button_highLevel = N'" + indexFirstButton + "' AND  CONNECT.connect_button_lowLevel = N'" + indexSecondButton + "')";
                     //MessageBox.Show("Nút "+id_button_1+" và "+indexSecondButton+" có EXECUTESCALR = "+ketnoisql.ExecuteScalar(queryString_connect_scalar_1).ToString());
                     string queryString_connect_scalar_2 = @"select count(*) FROM CONNECT
-                                                        WHERE (CONNECT.connect_button_highLevel = N'" + indexSecondButton + "' AND  CONNECT.connect_button_lowLevel = N'" + indexFirstButton + "')";
+                                                        WHERE (survey_id = " + idMucTieu + " AND CONNECT.connect_button_highLevel = N'" + indexSecondButton + "' AND  CONNECT.connect_button_lowLevel = N'" + indexFirstButton + "')";
 
 
                     //MessageBox.Show("space cua button  " + id_button_1 + " la " + (string)ketnoisql.ExecuteScalar(queryString_space_button1));
                     string queryString_space_button1 = @"SELECT  button_space  FROM   BUTTON  
-                                                        WHERE   (button_name = N'" + indexFirstButton + "')";
+                                                        WHERE   (survey_id = " + idMucTieu + " AND button_name = N'" + indexFirstButton + "')";
                     string queryString_space_button2 = @"SELECT  button_space  FROM   BUTTON  
-                                                        WHERE   (button_name = N'" + indexSecondButton + "')";
+                                                        WHERE   (survey_id = " + idMucTieu + " AND button_name = N'" + indexSecondButton + "')";
                     string space_button_1 = (string)ketnoisql.ExecuteScalar(queryString_space_button1);
                     string space_button_2 = (string)ketnoisql.ExecuteScalar(queryString_space_button2);
                     string queryString_space = "";
                     //MessageBox.Show("space cua button " + id_button_1 + " la " + ketnoisql.ExecuteScalar(queryString_space_button1).ToString() + "\n space cua button " + indexSecondButton + " la " + ketnoisql.ExecuteScalar(queryString_space_button2).ToString());
                     if (Convert.ToInt32(space_button_1) > Convert.ToInt32(space_button_2))
                         queryString_space = @"select count (*) FROM BUTTON
-                                                        WHERE( button_space < N'" + space_button_1 + "' AND button_space > N'" + space_button_2 + "')";
+                                                        WHERE(survey_id = " + idMucTieu + " AND  button_space < N'" + space_button_1 + "' AND button_space > N'" + space_button_2 + "')";
 
                     else
                         queryString_space = @"select count (*) FROM BUTTON
-                                                        WHERE( button_space > N'" + space_button_1 + "' AND button_space < N'" + space_button_2 + "')";
+                                                        WHERE(survey_id = " + idMucTieu + " AND  button_space > N'" + space_button_1 + "' AND button_space < N'" + space_button_2 + "')";
                     if ((int)ketnoisql.ExecuteScalar(queryString_connect_scalar_1) != 0 || (int)ketnoisql.ExecuteScalar(queryString_connect_scalar_2) != 0)
                     {
                         MessageBox.Show("Đã có nét vẽ rồi");
@@ -498,8 +498,8 @@ namespace DoAnTotNghiep
                 }
                 panelDrawMain.Invalidate();
                 //dua vao SQL ket noi gom button_HightLever = id_button_1, button_LowLever = indexSecondButton
-                string queryString2 = @"insert into CONNECT(connect_button_id, connect_button_highLevel, connect_button_lowLevel)
-                                                values          (N'" + indexConnect.ToString() + "',N'" + indexFirstButton + "',N'" + indexSecondButton + "')";
+                string queryString2 = @"insert into CONNECT(survey_id, connect_button_id, connect_button_highLevel, connect_button_lowLevel)
+                                                values(" + idMucTieu + ",N'" + indexConnect.ToString() + "',N'" + indexFirstButton + "',N'" + indexSecondButton + "')";
 
                 try
                 {
@@ -525,8 +525,8 @@ namespace DoAnTotNghiep
                 }
                 panelDrawMain.Invalidate();
                 //dua vao SQL ket noi gom button_HightLever = bt, button_LowLever = p
-                string queryString3 = @"insert into CONNECT(connect_button_id, connect_button_highLevel, connect_button_lowLevel)
-                                                values          (N'" + indexConnect.ToString() + "',N'" + indexSecondButton + "',N'" + indexFirstButton + "')";
+                string queryString3 = @"insert into CONNECT(survey_id, connect_button_id, connect_button_highLevel, connect_button_lowLevel)
+                                                values          (" + idMucTieu + ",N'" + indexConnect.ToString() + "',N'" + indexSecondButton + "',N'" + indexFirstButton + "')";
                 try
                 {
                     ketnoisql.ExecuteNonQuery(queryString3);
@@ -555,11 +555,27 @@ namespace DoAnTotNghiep
 
         private void DeleteTableTamp()
         {
-            foreach (object obj in arrayTableToDelete)
+            string tablesDrop = "", queryString_del_Buttonclick = "";
+            String[] arrTable = new String[arrayTableToDelete.Count];
+
+            for(int i =0;i<arrayTableToDelete.Count;i++)
             {
-                string queryString_del_Buttonclick = @" DROP TABLE " + obj + "";
-                //MessageBox.Show(queryString_del_Buttonclick);
-                ketnoisql.ExecuteNonQuery(queryString_del_Buttonclick);
+                arrTable[i] = arrayTableToDelete[i].ToString();             
+            }
+
+            if (arrayTableToDelete.Count > 0)
+            {
+                tablesDrop = String.Join(", ", arrTable);
+
+                queryString_del_Buttonclick = @" DROP TABLE " + tablesDrop + "";
+                try
+                {
+                    ketnoisql.ExecuteNonQuery(queryString_del_Buttonclick);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
                         
         }
@@ -578,7 +594,7 @@ namespace DoAnTotNghiep
             string table = "BUTTON";
             string dtg = "dtgButton";
 
-            string queryString_get_button = @"SELECT DISTINCT button_space FROM dbo.BUTTON";
+            string queryString_get_button = @"SELECT DISTINCT button_space FROM dbo.BUTTON WHERE survey_id = "+idMucTieu;
             this.dtgButton.DataSource = ketnoisql.getDatabase(queryString_get_button, table, dtg);
             levelNumber = dtgButton.RowCount - 1;
             //đưa vào mảng 1 chiều kiểu int, và sắp xếp lại theo chiều tăng của button_space
@@ -595,7 +611,7 @@ namespace DoAnTotNghiep
             //MessageBox.Show("n = "+levelNumber.ToString());
             for (int i = 0; i < levelNumber; i++)
             {
-                string queryString_level_button = @"UPDATE dbo.BUTTON set dbo.BUTTON.button_level = N'" + i.ToString() + "' Where dbo.BUTTON.button_space = N'" + buttonSpace[i] + "'";
+                string queryString_level_button = @"UPDATE dbo.BUTTON set dbo.BUTTON.button_level = N'" + i.ToString() + "' Where dbo.BUTTON.button_space = N'" + buttonSpace[i] + "' AND survey_id =" + idMucTieu;
                 ketnoisql.ExecuteNonQuery(queryString_level_button);
             }
 
@@ -606,53 +622,53 @@ namespace DoAnTotNghiep
             f.Show();
         }
 
-        private void newWindow(object sender, EventArgs e)
-        {
-            clickMenu = 0;
+        //private void newWindow(object sender, EventArgs e)
+        //{
+        //    clickMenu = 0;
 
-            //Xóa hết database
-            foreach (object obj in arrayTableToDelete)
-            {
-                string queryString_del_Buttonclick = @" DROP TABLE " + obj + "";
-                //MessageBox.Show(queryString_del_Buttonclick);
-                ketnoisql.ExecuteNonQuery(queryString_del_Buttonclick);
-            }
-            //Xóa database
-            string queryString_del_BUTON = @" Delete From BUTTON";
-            try
-            {
-                ketnoisql.ExecuteNonQuery(queryString_del_BUTON);
-            }
-            catch (SqlException)
-            {
-                MessageBox.Show("sai khi xóa button");
-            }
+        //    //Xóa hết database
+        //    foreach (object obj in arrayTableToDelete)
+        //    {
+        //        string queryString_del_Buttonclick = @" DROP TABLE " + obj + "";
+        //        //MessageBox.Show(queryString_del_Buttonclick);
+        //        ketnoisql.ExecuteNonQuery(queryString_del_Buttonclick);
+        //    }
+        //    //Xóa database
+        //    string queryString_del_BUTON = @" Delete From BUTTON";
+        //    try
+        //    {
+        //        ketnoisql.ExecuteNonQuery(queryString_del_BUTON);
+        //    }
+        //    catch (SqlException)
+        //    {
+        //        MessageBox.Show("sai khi xóa button");
+        //    }
 
-            string queryString_del_CONNECT = @" Delete From CONNECT";
-            try
-            {
-                ketnoisql.ExecuteNonQuery(queryString_del_CONNECT);
-            }
-            catch (SqlException)
-            {
-                MessageBox.Show("sai khi xóa connect");
-            }
-            Main.arrayTableToDelete.Clear();
-            InputData.subsetTextRecusive = null;
-            InputData.subsetButtonRecusive = null;
+        //    string queryString_del_CONNECT = @" Delete From CONNECT";
+        //    try
+        //    {
+        //        ketnoisql.ExecuteNonQuery(queryString_del_CONNECT);
+        //    }
+        //    catch (SqlException)
+        //    {
+        //        MessageBox.Show("sai khi xóa connect");
+        //    }
+        //    Main.arrayTableToDelete.Clear();
+        //    InputData.subsetTextRecusive = null;
+        //    InputData.subsetButtonRecusive = null;
 
-            this.Visible = false;
-            Main f = new Main();
-            //f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
+        //    this.Visible = false;
+        //    Main f = new Main();
+        //    //f.StartPosition = FormStartPosition.CenterScreen;
+        //    f.Show();
 
-            panelDrawMain.MouseDoubleClick += panel1_MouseDoubleClick;
-        }
+        //    panelDrawMain.MouseDoubleClick += panel1_MouseDoubleClick;
+        //}
 
         private void anazyle(object sender, EventArgs e)
         {
             clickMenu = 2;
-            formAnalyze f = new formAnalyze();
+            formAnalyze f = new formAnalyze(idMucTieu);
             f.Show();
             f.Close();
             Form4 f4 = new Form4();

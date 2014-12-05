@@ -15,9 +15,11 @@ namespace DoAnTotNghiep
 {
     public partial class formAnalyze : Form
     {
-        public formAnalyze()
+        int idMucTieu;
+        public formAnalyze(int id)
         {
             InitializeComponent();
+            idMucTieu = id;
         }
 
         //kiem tra tinh toan 2 pha co nghiem hay vo nghiem
@@ -59,7 +61,7 @@ namespace DoAnTotNghiep
             string xem = (Main.levelNumber - 3).ToString();
             //MessageBox.Show(xem);
 
-            string queryString_get_button1 = @"SELECT dbo.CONNECT.connect_button_highLevel, dbo.CONNECT.connect_button_lowLevel FROM            (SELECT button_name, button_level   FROM   dbo.BUTTON AS BUTTON_1   WHERE  (button_level BETWEEN '0' AND '" + xem + "')) AS derivedtbl_1 INNER JOIN  dbo.CONNECT ON derivedtbl_1.button_name = dbo.CONNECT.connect_button_highLevel";
+            string queryString_get_button1 = @"SELECT dbo.CONNECT.connect_button_highLevel, dbo.CONNECT.connect_button_lowLevel FROM (SELECT button_name, button_level   FROM   dbo.BUTTON AS BUTTON_1   WHERE  (button_level BETWEEN '0' AND '" + xem + "' AND survey_id = " + idMucTieu + ")) AS derivedtbl_1 INNER JOIN  dbo.CONNECT ON derivedtbl_1.button_name = dbo.CONNECT.connect_button_highLevel WHERE dbo.CONNECT.survey_id = " + idMucTieu + "";
             string table1 = "CONNECT";
             string dtg1 = "dtgConnect";
             this.dtgConnect.DataSource = ketnoisql.getDatabase(queryString_get_button1, table1, dtg1);
@@ -81,7 +83,7 @@ namespace DoAnTotNghiep
 
             
             //Lấy dữ liệu các nút có thể click để tính Bel, Pl
-            string queryString_get_button_BelPL = @"SELECT DISTINCT button_id, button_name, button_level   FROM   dbo.BUTTON   WHERE  (button_level BETWEEN '0' AND '" + xem + "')";
+            string queryString_get_button_BelPL = @"SELECT DISTINCT button_id, button_name, button_level   FROM   dbo.BUTTON   WHERE  (button_level BETWEEN '0' AND '" + xem + "' AND survey_id = "+idMucTieu+")";
             string table_BelPl = "BUTTON";
             string dtg_BelPl = "dtgButtonBelPl";
             this.dtgButtonBelPl.DataSource = ketnoisql.getDatabase(queryString_get_button_BelPL, table_BelPl, dtg_BelPl);
@@ -114,7 +116,7 @@ namespace DoAnTotNghiep
             
             //Tạo 1 mảng chứa các tập phương án
             //Show các button có giá trị level thấp nhất
-            string queryString_get_button2 = @"SELECT DISTINCT button_id, button_name, button_level   FROM   dbo.BUTTON   WHERE  (button_level = '" + (Main.levelNumber - 1).ToString() + "')";
+            string queryString_get_button2 = @"SELECT DISTINCT button_id, button_name, button_level   FROM   dbo.BUTTON   WHERE  (button_level = '" + (Main.levelNumber - 1).ToString() + "' AND survey_id = "+idMucTieu+")";
             string table2 = "BUTTON";
             string dtg2 = "dtgButtonLow";
             this.dtgButtonLow.DataSource = ketnoisql.getDatabase(queryString_get_button2, table2, dtg2);
@@ -430,7 +432,7 @@ namespace DoAnTotNghiep
                 string table = "CONNECT";
                 string dtg = "dtgButton";
 
-                string queryString_get_connect = @"SELECT DISTINCT dbo.BUTTON.button_id, dbo.CONNECT.connect_button_highLevel,dbo.CONNECT.connect_button_lowLevel, dbo.BUTTON.button_name, dbo.BUTTON.button_text FROM dbo.CONNECT JOIN dbo.BUTTON ON dbo.CONNECT.connect_button_lowLevel = dbo.BUTTON.button_name WHERE(connect_button_highLevel = N'" + obj1.ToString() + "')";
+                string queryString_get_connect = @"SELECT DISTINCT dbo.BUTTON.button_id, dbo.CONNECT.connect_button_highLevel,dbo.CONNECT.connect_button_lowLevel, dbo.BUTTON.button_name, dbo.BUTTON.button_text FROM dbo.CONNECT JOIN dbo.BUTTON ON dbo.CONNECT.connect_button_lowLevel = dbo.BUTTON.button_name WHERE(connect_button_highLevel = N'" + obj1.ToString() + "' AND dbo.CONNECT.survey_id = " + idMucTieu + " AND dbo.BUTTON.survey_id = "+idMucTieu+")";
                 this.dtgButton.DataSource = ketnoisql.getDatabase(queryString_get_connect, table, dtg);
 
 
@@ -469,7 +471,7 @@ namespace DoAnTotNghiep
                 string table = "CONNECT";
                 string dtg = "dtgButton";
 
-                string queryString_get_connect = @"SELECT DISTINCT dbo.BUTTON.button_id, dbo.CONNECT.connect_button_highLevel,dbo.CONNECT.connect_button_lowLevel, dbo.BUTTON.button_name, dbo.BUTTON.button_text FROM dbo.CONNECT JOIN dbo.BUTTON ON dbo.CONNECT.connect_button_lowLevel = dbo.BUTTON.button_name WHERE(connect_button_highLevel = N'" + obj1.ToString() + "')";
+                string queryString_get_connect = @"SELECT DISTINCT dbo.BUTTON.button_id, dbo.CONNECT.connect_button_highLevel,dbo.CONNECT.connect_button_lowLevel, dbo.BUTTON.button_name, dbo.BUTTON.button_text FROM dbo.CONNECT JOIN dbo.BUTTON ON dbo.CONNECT.connect_button_lowLevel = dbo.BUTTON.button_name WHERE(connect_button_highLevel = N'" + obj1.ToString() + "' AND dbo.CONNECT.survey_id = " + idMucTieu + " AND dbo.BUTTON.survey_id = "+idMucTieu+")";
                 this.dtgButton.DataSource = ketnoisql.getDatabase(queryString_get_connect, table, dtg);
                  
                 

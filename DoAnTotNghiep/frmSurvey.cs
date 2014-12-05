@@ -36,5 +36,26 @@ namespace DoAnTotNghiep
             else
                 MessageBox.Show("Vui long chon dong can tao");
         }
+
+        private void grvDSMucTieu_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            this.survey_targetTableAdapter.Update(this.dATNDataSet.survey_target);
+        }
+
+        private void grvDSMucTieu_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            //if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+            //{
+            //    grvSurvey.Rows[e.RowIndex].ErrorText = "";
+            //    int newInteger;
+            //    if (!int.TryParse(e.FormattedValue.ToString(), out newInteger) || newInteger < 0)
+            //    {
+            //        e.Cancel = true;
+            //        grvSurvey.Rows[e.RowIndex].ErrorText = "Phải nhập số lớn hơn 0";
+            //    }
+
+            //}
+
+        }
     }
 }

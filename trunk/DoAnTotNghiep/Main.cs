@@ -42,6 +42,13 @@ namespace DoAnTotNghiep
         //Khai báo số array list để lưu các table phải xóa khi thoát
         public static ArrayList arrayTableToDelete = new ArrayList();
 
+
+        private string nameMucTieu;
+        private int idMucTieu;
+        // Xac dinh trang thay import du lieu de kiem tra trong event cua gridview;
+        private bool importData = true;
+        
+
         public Main()
         {
             InitializeComponent();
@@ -49,12 +56,12 @@ namespace DoAnTotNghiep
             //this.StartPosition = FormStartPosition.CenterParent;
             //this.StartPosition = FormStartPosition.CenterScreen;
             //tạo panel 1
-            panel1.Width = 3000;
-            panel1.Height = 2000;
+            panelDrawMain.Width = 3000;
+            panelDrawMain.Height = 2000;
             //this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw, true);
 
             //tạo image để vẽ đường thẳng
-            image = new Bitmap(panel1.ClientSize.Width, panel1.ClientSize.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+            image = new Bitmap(panelDrawMain.ClientSize.Width, panelDrawMain.ClientSize.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
             
             //tạo khung đo
             for (int i = 0; i < 20; i++)
@@ -67,13 +74,50 @@ namespace DoAnTotNghiep
                 tb.ReadOnly = true;
                 tb.Enabled = false;
                 tb.Text = "";
-                panel1.Controls.Add(tb);
+                panelDrawMain.Controls.Add(tb);
             }
             
         }
 
+        public Main(String name, int id, DATNDataSet dataset)
+        {
+            importData = true;
+            InitializeComponent();
+
+            //tạo panel 1
+            panelDrawMain.Width = 3000;
+            panelDrawMain.Height = 2000;
+            //this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw, true);
+
+            //tạo image để vẽ đường thẳng
+            image = new Bitmap(panelDrawMain.ClientSize.Width, panelDrawMain.ClientSize.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+
+            //tạo khung đo
+            for (int i = 0; i < 20; i++)
+            {
+                TextBox tb = new TextBox();
+                tb.Width = 150;
+                tb.Height = 30;
+                tb.Left = 150 * i;
+                tb.Top = 0;
+                tb.ReadOnly = true;
+                tb.Enabled = false;
+                tb.Text = "";
+                panelDrawMain.Controls.Add(tb);
+            }
+
+            //khoi tao du lieu
+            nameMucTieu = name;
+            idMucTieu = id;
+            dATNDataSet = dataset;
+            importData = false;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dATNDataSet.BUTTON' table. You can move, or remove it, as needed.
+            this.bUTTONTableAdapter.FillBySurveyId(this.dATNDataSet.BUTTON,idMucTieu);
+            bUTTONBindingSource.DataSource = this.dATNDataSet.BUTTON;
             
         }
 
@@ -97,7 +141,7 @@ namespace DoAnTotNghiep
             //this.Controls.Add(tb1);
 
 
-            panel1.Controls.Add(tb1);
+            panelDrawMain.Controls.Add(tb1);
             tb1.Focus();
             //tb1.KeyDown += new KeyEventHandler(tb1_KeyDown);
             tb1.KeyDown += textboxKeyDown;
@@ -132,24 +176,34 @@ namespace DoAnTotNghiep
                         bt1.Left = txt.Left;
                         bt1.Text = txt.Text;
                         //bt1.Click += new EventHandler(bt1_ClickPaint);
-                        panel1.Controls.Add(bt1);
+                        panelDrawMain.Controls.Add(bt1);
+                        bt1.Click += clickButtonToDraw;
+
+                        DataRow row = dATNDataSet.BUTTON.NewRow();
+                        row["survey_id"] = idMucTieu;
+                        row["button_name"] = bt1.Name;
+                        row["button_id"] = indexButton.ToString();
+                        row["button_text"] = bt1.Text;
+                        row["button_space"] = (bt1.Left / 150).ToString();
+                        dATNDataSet.BUTTON.Rows.Add(row);
+                        bUTTONTableAdapter.Update(dATNDataSet.BUTTON);
 
                         //Dua vao SQL button gom ten button = bt1.Name, khoang button = bt1.Left /150,
 
-                        string queryString = @"insert into BUTTON(button_name, button_id, button_text, button_space)
-                                            values          (N'" + bt1.Name + "',N'" + indexButton.ToString() + "',N'" + bt1.Text + "',N'" + (bt1.Left / 150).ToString() + "')";
+//                        string queryString = @"insert into BUTTON(button_name, button_id, button_text, button_space)
+//                                            values          (N'" + bt1.Name + "',N'" + indexButton.ToString() + "',N'" + bt1.Text + "',N'" + (bt1.Left / 150).ToString() + "')";
 
-                        try
-                        {
-                            ketnoisql.ExecuteNonQuery(queryString);
-                        }
-                        catch (SqlException)
-                        {
-                            MessageBox.Show("Dữ liệu thực sự đã tồn tại");
-                        }
+//                        try
+//                        {
+//                            ketnoisql.ExecuteNonQuery(queryString);
+//                        }
+//                        catch (SqlException)
+//                        {
+//                            MessageBox.Show("Dữ liệu thực sự đã tồn tại");
+//                        }
                         indexButton++;
                        
-                        bt1.Click += clickButtonToDraw;
+                        
                         
                 }
             }
@@ -265,7 +319,7 @@ namespace DoAnTotNghiep
                             {
                                 graphics.DrawLine(penDraw, pointRight.X, pointRight.Y, bt1.Left, bt1.Top + 15);
                             }
-                            panel1.Invalidate();
+                            panelDrawMain.Invalidate();
                             //dua vao SQL ket noi gom button_HightLever = id_button_1, button_LowLever = indexSecondButton
                             string queryString2 = @"insert into CONNECT(connect_button_id, connect_button_highLevel, connect_button_lowLevel)
                                                 values          (N'" + indexConnect.ToString() + "',N'" + indexFirstButton + "',N'" + indexSecondButton + "')";
@@ -292,7 +346,7 @@ namespace DoAnTotNghiep
                             {
                                 graphics.DrawLine(penDraw, pointLeft.X, pointLeft.Y, bt1.Left + 100, bt1.Top + 15);
                             }
-                            panel1.Invalidate();
+                            panelDrawMain.Invalidate();
                             //dua vao SQL ket noi gom button_HightLever = bt, button_LowLever = p
                             string queryString3 = @"insert into CONNECT(connect_button_id, connect_button_highLevel, connect_button_lowLevel)
                                                 values          (N'" + indexConnect.ToString() + "',N'" + indexSecondButton + "',N'" + indexFirstButton + "')";
@@ -395,7 +449,7 @@ namespace DoAnTotNghiep
             }
 
 
-            panel1.MouseDoubleClick -= panel1_MouseDoubleClick;
+            panelDrawMain.MouseDoubleClick -= panel1_MouseDoubleClick;
             //Tổng số lượng chuyên gia tham gia đánh giá
             totalExperts f = new totalExperts();
             f.Show();
@@ -441,7 +495,7 @@ namespace DoAnTotNghiep
             //f.StartPosition = FormStartPosition.CenterScreen;
             f.Show();
 
-            panel1.MouseDoubleClick += panel1_MouseDoubleClick;
+            panelDrawMain.MouseDoubleClick += panel1_MouseDoubleClick;
         }
 
         private void anazyle(object sender, EventArgs e)
@@ -472,6 +526,53 @@ namespace DoAnTotNghiep
                 inputDataMenu.Enabled = false;
                 analyzeMenu.Enabled = false;
             }
+        }
+
+
+        private void grvCriteria_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (importData)
+                return;
+            bUTTONTableAdapter.Update(dATNDataSet.BUTTON);
+        }
+
+        private void grvCriteria_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            bUTTONTableAdapter.Update(dATNDataSet.BUTTON);
+        }
+
+
+        private void grvCriteria_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (importData)
+                return;
+
+            //int idTieucChi = Convert.ToInt32(e.Row.Cells[0].Value.ToString());
+            //Button btn = dicTieuChi[idTieucChi];
+            //pnTieuChi.Controls.Remove(btn);
+        }
+
+        private void grvCriteria_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (importData)
+                return;
+
+            //int idTieucChi = Convert.ToInt32(grvCriteria.Rows[e.RowIndex].Cells[0].Value.ToString());
+            //Button btn = dicTieuChi[idTieucChi];
+            //if (e.ColumnIndex == 2)
+            //    btn.Text = grvCriteria.Rows[e.RowIndex].Cells[2].Value.ToString();
+            //if (e.ColumnIndex == 4)
+            //{
+            //    pnTieuChi.Controls.Remove(btn);
+            //    int soO = Convert.ToInt32(grvCriteria.Rows[e.RowIndex].Cells[4].Value.ToString());
+            //    TaoButton(btn, btn.Name, btn.Text, btn.Top, soO * 150, btn.Height, btn.Width);
+            //}
+            bUTTONTableAdapter.Update(dATNDataSet.BUTTON);
+        }
+
+        private void panelDrawMain_Resize(object sender, EventArgs e)
+        {
+            image = new Bitmap(panelDrawMain.ClientSize.Width, panelDrawMain.ClientSize.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace DoAnTotNghiep
     {
         public static SqlDataAdapter _dataAdapter;
         public static DataSet _dataSet;
-        public static String cn = "Data Source=.\\SQLEXPRESS;user id = sa ; Password = anhvinh ; database = DATN";
+        public static String cn = "Data Source=(local)\\SQLEXPRESS;Initial Catalog=DATN;User ID=sa;Password=123456";
 
 
 
